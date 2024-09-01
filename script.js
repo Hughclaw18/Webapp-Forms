@@ -61,7 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
         let dob = document.getElementById('dob').value;
         let email = document.getElementById('email').value.trim();
         let phone = document.getElementById('phone').value.trim();
+        let description = document.getElementById('description').value.trim(); // Get the value of the text area
         let errorMessage = document.getElementById('errorMessage');
+        let wordCountError = document.getElementById('wordCountError');
 
         // Get selected roles
         let selectedRoles = Array.from(document.querySelectorAll('input[name="roles"]:checked')).map(cb => cb.value);
@@ -74,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Clear any previous error messages
         errorMessage.textContent = '';
+        wordCountError.textContent = '';
 
         // Validation checks
         let isValid = true;
@@ -105,6 +108,14 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (selectedRoles.length === 0 || selectedRoles.length > 2) {
             errorMessage.textContent = "Please select up to 2 roles.";
             isValid = false;
+        } else {
+            // Word count validation for the description text area
+            let wordCount = description.split(/\s+/).filter(word => word.length > 0).length;
+            if (wordCount < 100) {
+                wordCountError.textContent = "Please enter at least 100 words in the description.";
+                document.getElementById('description').focus();
+                isValid = false;
+            }
         }
 
         if (!isValid) {
