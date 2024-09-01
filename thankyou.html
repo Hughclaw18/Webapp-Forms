@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+            background: url('https://www.acm.org/binaries/content/gallery/acm/banners/acm_future_academy_banner.jpg') no-repeat center center;
+            background-size: cover;
+            color: white;
+        }
+        .content {
+            background-color: rgba(0, 0, 0, 0.7); /* Slightly transparent black background */
+            display: inline-block;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 50px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #0072ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005bb5;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Thank You for Submitting Your Response!</h1>
+        <p>We will get back to you soon.</p>
+        <p>You will be redirected to the official ACM website shortly.</p>
+        <button onclick="window.location.href='index.html'">Back to Form</button>
+    </div>
+
+    <script>
+        // Redirect to ACM website after 5 seconds
+        setTimeout(function() {
+            window.location.href = "https://www.acm.org/";
+        }, 5000);
+    </script>
+</body>
+</html>
