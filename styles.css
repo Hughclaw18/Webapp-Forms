@@ -80,6 +80,8 @@ body {
 
 .textarea-wrapper {
             margin: 20px 0;
+    width: 50px;  /* Set the width of the text area */
+    height:80px; /* Set the height of the text area */
         }
         .error-message {
             color: red;
