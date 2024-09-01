@@ -30,24 +30,28 @@
     <!-- Main Content -->
     <div class="container">
         <!-- Login Form -->
-        <div id="loginForm" class="form-section">
-            <h2>Login</h2>
-            <form id="loginFormElement">
-                <label for="loginEmail">ACM Email:</label>
-                <input type="email" id="loginEmail" name="loginEmail" required aria-label="ACM Email">
-                
-                <label for="loginPassword">Password:</label>
-                <input type="password" id="loginPassword" name="loginPassword" required aria-label="Password">
-                <input type="checkbox" id="showLoginPassword"> <label for="showLoginPassword">Show Password</label>
-                
-                <label for="confirmPassword">Confirm Password:</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" required aria-label="Confirm Password">
-                <input type="checkbox" id="showConfirmPassword"> <label for="showConfirmPassword">Show Password</label>
-
-                <button type="submit">Login</button>
-                <p id="loginErrorMessage" class="error"></p>
-            </form>
+<div id="loginForm" class="form-section">
+    <h2>Login</h2>
+    <form id="loginFormElement">
+        <label for="loginEmail">ACM Email:</label>
+        <input type="email" id="loginEmail" name="loginEmail" required aria-label="ACM Email">
+        
+        <label for="loginPassword">Password:</label>
+        <div class="password-wrapper">
+            <input type="password" id="loginPassword" name="loginPassword" required aria-label="Password">
+            <i id="toggleLoginPassword" class="fas fa-eye"></i>
         </div>
+        
+        <label for="confirmPassword">Confirm Password:</label>
+        <div class="password-wrapper">
+            <input type="password" id="confirmPassword" name="confirmPassword" required aria-label="Confirm Password">
+            <i id="toggleConfirmPassword" class="fas fa-eye"></i>
+        </div>
+
+        <button type="submit">Login</button>
+        <p id="loginErrorMessage" class="error"></p>
+    </form>
+</div>
 
         <!-- Registration Form -->
         <div id="registrationSection" class="form-section" style="display: none;">
