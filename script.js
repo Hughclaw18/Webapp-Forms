@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const emailPattern = /^[a-zA-Z0-9._%+-]+@kpriet\.ac\.in$/;
         const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?!.*[^\w@#])(?!.*\s)[A-Za-z\d@#]{8,}$/; // At least 8 characters, letters, numbers, @, # only
 
+        // Clear any previous error messages
+        loginErrorMessage.textContent = '';
+
         if (!emailPattern.test(loginEmail)) {
             loginErrorMessage.textContent = 'Please enter a valid organization-provided email address.';
             return;
@@ -58,9 +61,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Regex patterns
         const namePattern = /^[A-Za-z\s]+$/;
-        const emailPattern = /^[a-zA-Z0-9._%+-]+@kpriet\.ac\.in$/;
+        const regEmailPattern = /^[a-zA-Z0-9._%+-]+@kpriet\.ac\.in$/; // Renamed to avoid conflict
         const phonePattern = /^[0-9]{10}$/;
         const rollNumberPattern = /^[A-Za-z0-9]{7}$/;
+
+        // Clear any previous error messages
+        errorMessage.textContent = '';
 
         // Validation
         let isValid = true;
@@ -69,39 +75,27 @@ document.addEventListener('DOMContentLoaded', () => {
             errorMessage.textContent = "Please enter a valid name (letters and spaces only).";
             document.getElementById('name').focus();
             isValid = false;
-        }
-
-        if (gender === "") {
+        } else if (gender === "") {
             errorMessage.textContent = "Please select your gender.";
             document.getElementById('gender').focus();
             isValid = false;
-        }
-
-        if (!rollNumberPattern.test(rollNumber)) {
+        } else if (!rollNumberPattern.test(rollNumber)) {
             errorMessage.textContent = "Please enter a valid 7-character roll number (letters and numbers only).";
             document.getElementById('rollNumber').focus();
             isValid = false;
-        }
-
-        if (!dob) {
+        } else if (!dob) {
             errorMessage.textContent = "Please enter your date of birth.";
             document.getElementById('dob').focus();
             isValid = false;
-        }
-
-        if (!emailPattern.test(email)) {
+        } else if (!regEmailPattern.test(email)) {
             errorMessage.textContent = "Please enter a valid KPRIET email (e.g., name@kpriet.ac.in).";
             document.getElementById('email').focus();
             isValid = false;
-        }
-
-        if (!phonePattern.test(phone)) {
+        } else if (!phonePattern.test(phone)) {
             errorMessage.textContent = "Please enter a valid 10-digit phone number.";
             document.getElementById('phone').focus();
             isValid = false;
-        }
-
-        if (selectedRoles.length === 0 || selectedRoles.length > 2) {
+        } else if (selectedRoles.length === 0 || selectedRoles.length > 2) {
             errorMessage.textContent = "Please select up to 2 roles.";
             isValid = false;
         }
@@ -117,10 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Redirect to thank you page
         window.location.href = "thankyou.html";
     });
-
-    // Toggle password visibility in registration form
-    togglePasswordVisibility('showRegPassword', 'password');
-    togglePasswordVisibility('showConfirmRegPassword', 'confirmPassword');
 
     // JavaScript for cursor movement and scroll effect
     const cursor = document.createElement('div');
