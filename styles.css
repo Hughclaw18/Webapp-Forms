@@ -1,3 +1,4 @@
+/* Global Styles */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -21,7 +22,8 @@ body {
     object-fit: cover; /* Cover the entire viewport */
     z-index: -1; /* Place behind other content */
 }
-/* Style for the ACM logo container */
+
+/* ACM Banner Section */
 .logo-container {
     position: absolute;
     top: 25px; /* Adjust as needed */
@@ -65,6 +67,7 @@ body {
     font-size: 1em;
 }
 
+/* Form Container */
 .container {
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
@@ -75,6 +78,7 @@ body {
     margin: 20px auto; /* Center the container */
 }
 
+/* Forms and Inputs */
 form {
     display: flex;
     flex-direction: column;
@@ -89,7 +93,8 @@ input[type="text"],
 input[type="date"],
 input[type="email"],
 input[type="tel"],
-select {
+select,
+input[type="password"] {
     margin-bottom: 15px;
     padding: 10px;
     border: 1px solid #ccc;
@@ -102,9 +107,10 @@ input[type="text"]:focus,
 input[type="date"]:focus,
 input[type="email"]:focus,
 input[type="tel"]:focus,
-select:focus {
-    border-color: #004d00; /* Dark gray border on focus */
-    box-shadow: 0 0 10px rgba(85, 85, 85, 0.5); /* Dark gray shadow */
+select:focus,
+input[type="password"]:focus {
+    border-color: #004d00; /* Dark green border on focus */
+    box-shadow: 0 0 10px rgba(0, 77, 0, 0.5); /* Dark green shadow */
     outline: none;
 }
 
@@ -114,6 +120,7 @@ input[type="checkbox"] {
     cursor: pointer;
 }
 
+/* Buttons */
 button {
     padding: 12px;
     background-color: #444; /* Dark gray button background */
@@ -135,6 +142,7 @@ button:active {
     transform: scale(0.95);
 }
 
+/* Error Messages */
 .error {
     color: red;
     margin-top: -10px;
@@ -144,6 +152,7 @@ button:active {
     font-size: 14px;
 }
 
+/* Footer */
 footer {
     width: 100%;
     background-color: #000000; /* Black background for the footer */
@@ -175,7 +184,7 @@ footer {
     color: #00ff00; /* Green color on hover for contrast */
 }
 
-
+/* Cursor Animation */
 .mouse-move-bg {
     background: linear-gradient(90deg, #e0e0e0, #f4f4f4); /* Light gradient background */
     background-size: 200% 200%;
@@ -192,13 +201,13 @@ footer {
     100% { background-position: 0% 50%; }
 }
 
-/* Responsive design */
+/* Responsive Design */
 @media (max-width: 600px) {
     .container {
         padding: 20px;
     }
 
-    h1 {
+    .heading-content h1 {
         font-size: 20px;
     }
 
@@ -206,7 +215,8 @@ footer {
     input[type="date"],
     input[type="email"],
     input[type="tel"],
-    select {
+    select,
+    input[type="password"] {
         font-size: 14px;
         padding: 8px;
     }
@@ -214,18 +224,4 @@ footer {
     button {
         font-size: 16px;
     }
-}
-
-input[type="password"] {
-    font-size: 1rem;
-    padding: 0.5rem;
-}
-
-input[type="text"] {
-    font-size: 1rem;
-    padding: 0.5rem;
-}
-
-input[type="checkbox"] {
-    margin-left: 0.5rem;
 }
