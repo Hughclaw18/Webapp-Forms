@@ -77,6 +77,14 @@ body {
     width: 100%;
     margin: 20px auto; /* Center the container */
 }
+
+.textarea-wrapper {
+            margin: 20px 0;
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+        }
 /* Password Wrapper for Toggle Visibility Icon */
 .password-wrapper {
     position: relative; /* Allows the icon to be positioned absolutely within this container */
