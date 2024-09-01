@@ -62,9 +62,9 @@ document.addEventListener('DOMContentLoaded', () => {
         let dob = document.getElementById('dob').value;
         let email = document.getElementById('email').value.trim();
         let phone = document.getElementById('phone').value.trim();
-        let description = document.getElementById('description').value.trim(); // Get the value of the text area
+        let description = document.getElementById('text-box').value.trim(); // Get the value of the text area
         let errorMessage = document.getElementById('errorMessage');
-        let wordCountError = document.getElementById('wordCountError');
+        let wordCountError = document.getElementById('error-message');
 
         // Get selected roles
         let selectedRoles = Array.from(document.querySelectorAll('input[name="roles"]:checked')).map(cb => cb.value);
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let wordCount = description.split(/\s+/).filter(word => word.length > 0).length;
             if (wordCount < 100) {
                 wordCountError.textContent = "Please enter at least 100 words in the description.";
-                document.getElementById('description').focus();
+                document.getElementById('text-box').focus();
                 isValid = false;
             }
         }
