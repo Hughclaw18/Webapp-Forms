@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
+    console.log("DOM fully loaded and parsed");
+
     // Handle login form submission
-    document.getElementById('loginFormElement').addEventListener('submit', function (e) {
+    document.getElementById('loginFormElement').addEventListener('submit', function(e) {
         e.preventDefault();
 
         const loginEmail = document.getElementById('loginEmail').value.trim();
@@ -38,22 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('registrationSection').style.display = 'block';
     });
 
-    // Toggle password visibility function
-    function togglePasswordVisibility(toggleId, passwordId) {
-        document.getElementById(toggleId).addEventListener('click', function () {
-            const passwordField = document.getElementById(passwordId);
-            passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
-            this.classList.toggle('fa-eye');
-            this.classList.toggle('fa-eye-slash');
-        });
-    }
-
-    togglePasswordVisibility('toggleLoginPassword', 'loginPassword');
-    togglePasswordVisibility('toggleConfirmPassword', 'confirmPassword');
-
     // Handle registration form submission
-    document.getElementById('registrationForm').addEventListener('submit', function (e) {
+    document.getElementById('registrationForm').addEventListener('submit', function(e) {
         e.preventDefault();
+        console.log("Registration form submitted");
 
         let name = document.getElementById('name').value.trim();
         let gender = document.getElementById('gender').value;
@@ -81,36 +71,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!namePattern.test(name)) {
             errorMessage.textContent = "Please enter a valid name (letters and spaces only).";
+            console.log("Invalid name");
             document.getElementById('name').focus();
             isValid = false;
         } else if (gender === "") {
             errorMessage.textContent = "Please select your gender.";
+            console.log("Gender not selected");
             document.getElementById('gender').focus();
             isValid = false;
         } else if (!rollNumberPattern.test(rollNumber)) {
             errorMessage.textContent = "Please enter a valid 7-character roll number (letters and numbers only).";
+            console.log("Invalid roll number");
             document.getElementById('rollNumber').focus();
             isValid = false;
         } else if (!dob) {
             errorMessage.textContent = "Please enter your date of joining.";
+            console.log("DOB not entered");
             document.getElementById('dob').focus();
             isValid = false;
         } else if (!emailPattern.test(email)) {
             errorMessage.textContent = "Please enter a valid KPRIET email (e.g., name@kpriet.ac.in).";
+            console.log("Invalid email");
             document.getElementById('email').focus();
             isValid = false;
         } else if (!phonePattern.test(phone)) {
             errorMessage.textContent = "Please enter a valid 10-digit phone number.";
+            console.log("Invalid phone number");
             document.getElementById('phone').focus();
             isValid = false;
         } else if (selectedRoles.length === 0 || selectedRoles.length > 2) {
             errorMessage.textContent = "Please select up to 2 roles.";
+            console.log("Invalid roles selection");
             isValid = false;
         } else {
             // Word count validation for the description text area
             let wordCount = description.split(/\s+/).filter(word => word.length > 0).length;
             if (wordCount < 100) {
                 errorMessage.textContent = "Please enter at least 100 words in the description.";
+                console.log("Description too short");
                 document.getElementById('description').focus();
                 isValid = false;
             }
@@ -127,6 +125,19 @@ document.addEventListener('DOMContentLoaded', () => {
         // Redirect to thank you page
         window.location.href = "thankyou.html";
     });
+
+    // Toggle password visibility function
+    function togglePasswordVisibility(toggleId, passwordId) {
+        document.getElementById(toggleId).addEventListener('click', function() {
+            const passwordField = document.getElementById(passwordId);
+            passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+    }
+
+    togglePasswordVisibility('toggleLoginPassword', 'loginPassword');
+    togglePasswordVisibility('toggleConfirmPassword', 'confirmPassword');
 
     // Cursor movement and scroll effect
     const cursor = document.createElement('div');
