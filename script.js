@@ -68,7 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Get selected roles
         let selectedRoles = Array.from(document.querySelectorAll('input[name="roles"]:checked')).map(cb => cb.value);
-        
         // Regex patterns
         const namePattern = /^[A-Za-z\s]+$/;
         const regEmailPattern = /^[a-zA-Z0-9._%+-]+@kpriet\.ac\.in$/; 
