@@ -30,16 +30,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Show/Hide Password in Login Form
-    document.getElementById('showLoginPassword').addEventListener('change', function() {
-        const passwordField = document.getElementById('loginPassword');
-        passwordField.type = this.checked ? 'text' : 'password';
-    });
+    // Toggle password visibility
+    function togglePasswordVisibility(toggleId, passwordId) {
+        document.getElementById(toggleId).addEventListener('change', function() {
+            const passwordField = document.getElementById(passwordId);
+            passwordField.type = this.checked ? 'text' : 'password';
+        });
+    }
 
-    document.getElementById('showConfirmPassword').addEventListener('change', function() {
-        const confirmPasswordField = document.getElementById('confirmPassword');
-        confirmPasswordField.type = this.checked ? 'text' : 'password';
-    });
+    togglePasswordVisibility('showLoginPassword', 'loginPassword');
+    togglePasswordVisibility('showConfirmPassword', 'confirmPassword');
 
     // Handle registration form submission
     document.getElementById('registrationForm').addEventListener('submit', function(e) {
@@ -118,16 +118,9 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = "thankyou.html";
     });
 
-    // Show/Hide Password in Registration Form
-    document.getElementById('showRegPassword').addEventListener('change', function() {
-        const passwordField = document.getElementById('password');
-        passwordField.type = this.checked ? 'text' : 'password';
-    });
-
-    document.getElementById('showConfirmRegPassword').addEventListener('change', function() {
-        const confirmPasswordField = document.getElementById('confirmPassword');
-        confirmPasswordField.type = this.checked ? 'text' : 'password';
-    });
+    // Toggle password visibility in registration form
+    togglePasswordVisibility('showRegPassword', 'password');
+    togglePasswordVisibility('showConfirmRegPassword', 'confirmPassword');
 
     // JavaScript for cursor movement and scroll effect
     const cursor = document.createElement('div');
@@ -137,9 +130,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('mousemove', (event) => {
         const { clientX, clientY } = event;
         cursor.style.transform = `translate3d(${clientX}px, ${clientY}px, 0)`;
-
-        // Adding the cursor animation
-        cursor.style.animation = 'cursor-move 0.5s ease-in-out infinite';
     });
 
     // Scrolling effect based on cursor movement
