@@ -21,6 +21,17 @@ body {
     object-fit: cover; /* Cover the entire viewport */
     z-index: -1; /* Place behind other content */
 }
+/* Style for the ACM logo container */
+.logo-container {
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    left: 10px; /* Adjust as needed */
+}
+
+.acm-logo {
+    height: 50px; /* Adjust size as needed */
+    width: auto;
+}
 
 .acm-banner-container {
     position: relative;
@@ -30,6 +41,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden; /* Ensure the content fits well within the container */
 }
 
 .heading-wrapper {
