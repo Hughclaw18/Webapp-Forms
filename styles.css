@@ -77,6 +77,31 @@ body {
     width: 100%;
     margin: 20px auto; /* Center the container */
 }
+/* Password Wrapper for Toggle Visibility Icon */
+.password-wrapper {
+    position: relative; /* Allows the icon to be positioned absolutely within this container */
+}
+
+.password-wrapper input[type="password"],
+.password-wrapper input[type="text"] { /* Ensure styles apply to both password and text types for toggle functionality */
+    width: calc(100% - 40px); /* Adjust width to accommodate the icon */
+    padding-right: 40px; /* Add padding to avoid text overlapping with the icon */
+}
+
+.password-wrapper i {
+    position: absolute; /* Position the icon inside the wrapper */
+    right: 10px; /* Align the icon to the right side */
+    top: 50%; /* Center the icon vertically */
+    transform: translateY(-50%); /* Correct vertical centering */
+    cursor: pointer; /* Change cursor to pointer to indicate clickability */
+    color: #004d00; /* Dark green color for the icon */
+    font-size: 1.2em; /* Slightly larger icon size for better visibility */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.password-wrapper i:hover {
+    color: #006600; /* Slightly darker shade on hover for visual feedback */
+}
 
 /* Forms and Inputs */
 form {
