@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Handle login form submission
-    document.getElementById('loginFormElement').addEventListener('submit', function(e) {
+    document.getElementById('loginFormElement').addEventListener('submit', function (e) {
         e.preventDefault();
 
         const loginEmail = document.getElementById('loginEmail').value.trim();
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Toggle password visibility function
     function togglePasswordVisibility(toggleId, passwordId) {
-        document.getElementById(toggleId).addEventListener('click', function() {
+        document.getElementById(toggleId).addEventListener('click', function () {
             const passwordField = document.getElementById(passwordId);
             passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
             this.classList.toggle('fa-eye');
@@ -51,83 +51,82 @@ document.addEventListener('DOMContentLoaded', () => {
     togglePasswordVisibility('toggleLoginPassword', 'loginPassword');
     togglePasswordVisibility('toggleConfirmPassword', 'confirmPassword');
 
-// Handle registration form submission
-document.getElementById('registrationForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+    // Handle registration form submission
+    document.getElementById('registrationForm').addEventListener('submit', function (e) {
+        e.preventDefault();
 
-    let name = document.getElementById('name').value.trim();
-    let gender = document.getElementById('gender').value;
-    let rollNumber = document.getElementById('rollNumber').value.trim();
-    let dob = document.getElementById('dob').value;
-    let email = document.getElementById('email').value.trim();
-    let phone = document.getElementById('phone').value.trim();
-    let description = document.getElementById('description').value.trim(); // Get the value of the text area
-    let errorMessage = document.getElementById('errorMessage');
+        let name = document.getElementById('name').value.trim();
+        let gender = document.getElementById('gender').value;
+        let rollNumber = document.getElementById('rollNumber').value.trim();
+        let dob = document.getElementById('dob').value;
+        let email = document.getElementById('email').value.trim();
+        let phone = document.getElementById('phone').value.trim();
+        let description = document.getElementById('description').value.trim(); // Get the value of the text area
+        let errorMessage = document.getElementById('errorMessage');
 
-    // Get selected roles
-    let selectedRoles = Array.from(document.querySelectorAll('input[name="roles"]:checked')).map(cb => cb.value);
+        // Get selected roles
+        let selectedRoles = Array.from(document.querySelectorAll('input[name="roles"]:checked')).map(cb => cb.value);
 
-    // Regex patterns
-    const namePattern = /^[A-Za-z\s]+$/;
-    const emailPattern = /^[a-zA-Z0-9._%+-]+@kpriet\.ac\.in$/;
-    const phonePattern = /^[0-9]{10}$/;
-    const rollNumberPattern = /^[A-Za-z0-9]{7}$/;
+        // Regex patterns
+        const namePattern = /^[A-Za-z\s]+$/;
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@kpriet\.ac\.in$/;
+        const phonePattern = /^[0-9]{10}$/;
+        const rollNumberPattern = /^[A-Za-z0-9]{7}$/;
 
-    // Clear previous error messages
-    errorMessage.textContent = '';
+        // Clear previous error messages
+        errorMessage.textContent = '';
 
-    // Validation checks
-    let isValid = true;
+        // Validation checks
+        let isValid = true;
 
-    if (!namePattern.test(name)) {
-        errorMessage.textContent = "Please enter a valid name (letters and spaces only).";
-        document.getElementById('name').focus();
-        isValid = false;
-    } else if (gender === "") {
-        errorMessage.textContent = "Please select your gender.";
-        document.getElementById('gender').focus();
-        isValid = false;
-    } else if (!rollNumberPattern.test(rollNumber)) {
-        errorMessage.textContent = "Please enter a valid 7-character roll number (letters and numbers only).";
-        document.getElementById('rollNumber').focus();
-        isValid = false;
-    } else if (!dob) {
-        errorMessage.textContent = "Please enter your date of Joining.";
-        document.getElementById('dob').focus();
-        isValid = false;
-    } else if (!emailPattern.test(email)) {
-        errorMessage.textContent = "Please enter a valid KPRIET email (e.g., name@kpriet.ac.in).";
-        document.getElementById('email').focus();
-        isValid = false;
-    } else if (!phonePattern.test(phone)) {
-        errorMessage.textContent = "Please enter a valid 10-digit phone number.";
-        document.getElementById('phone').focus();
-        isValid = false;
-    } else if (selectedRoles.length === 0 || selectedRoles.length > 2) {
-        errorMessage.textContent = "Please select up to 2 roles.";
-        isValid = false;
-    } else {
-        // Word count validation for the description text area
-        let wordCount = description.split(/\s+/).filter(word => word.length > 0).length;
-        if (wordCount < 100) {
-            errorMessage.textContent = "Please enter at least 100 words in the description.";
-            document.getElementById('description').focus();
+        if (!namePattern.test(name)) {
+            errorMessage.textContent = "Please enter a valid name (letters and spaces only).";
+            document.getElementById('name').focus();
             isValid = false;
+        } else if (gender === "") {
+            errorMessage.textContent = "Please select your gender.";
+            document.getElementById('gender').focus();
+            isValid = false;
+        } else if (!rollNumberPattern.test(rollNumber)) {
+            errorMessage.textContent = "Please enter a valid 7-character roll number (letters and numbers only).";
+            document.getElementById('rollNumber').focus();
+            isValid = false;
+        } else if (!dob) {
+            errorMessage.textContent = "Please enter your date of joining.";
+            document.getElementById('dob').focus();
+            isValid = false;
+        } else if (!emailPattern.test(email)) {
+            errorMessage.textContent = "Please enter a valid KPRIET email (e.g., name@kpriet.ac.in).";
+            document.getElementById('email').focus();
+            isValid = false;
+        } else if (!phonePattern.test(phone)) {
+            errorMessage.textContent = "Please enter a valid 10-digit phone number.";
+            document.getElementById('phone').focus();
+            isValid = false;
+        } else if (selectedRoles.length === 0 || selectedRoles.length > 2) {
+            errorMessage.textContent = "Please select up to 2 roles.";
+            isValid = false;
+        } else {
+            // Word count validation for the description text area
+            let wordCount = description.split(/\s+/).filter(word => word.length > 0).length;
+            if (wordCount < 100) {
+                errorMessage.textContent = "Please enter at least 100 words in the description.";
+                document.getElementById('description').focus();
+                isValid = false;
+            }
         }
-    }
 
-    if (!isValid) {
-        return;  // Stop if validation fails
-    }
+        if (!isValid) {
+            return;  // Stop if validation fails
+        }
 
-    // If all validations pass, redirect to the thank you page
-    errorMessage.textContent = "";
-    alert(`Registration successful for the roles: ${selectedRoles.join(', ')}!`);
+        // If all validations pass, redirect to the thank you page
+        errorMessage.textContent = "";
+        alert(`Registration successful for the roles: ${selectedRoles.join(', ')}!`);
 
-    // Redirect to thank you page
-    window.location.href = "thankyou.html";
-});
-
+        // Redirect to thank you page
+        window.location.href = "thankyou.html";
+    });
 
     // Cursor movement and scroll effect
     const cursor = document.createElement('div');
