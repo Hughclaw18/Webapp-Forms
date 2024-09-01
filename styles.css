@@ -24,12 +24,12 @@ body {
 /* Style for the ACM logo container */
 .logo-container {
     position: absolute;
-    top: 15px; /* Adjust as needed */
-    left: 15px; /* Adjust as needed */
+    top: 25px; /* Adjust as needed */
+    left: 25px; /* Adjust as needed */
 }
 
 .acm-logo {
-    height: 80px; /* Adjust size as needed */
+    height: 150px; /* Adjust size as needed */
     width: auto;
 }
 
