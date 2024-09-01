@@ -8,41 +8,48 @@ document.addEventListener('DOMContentLoaded', () => {
         const confirmPassword = document.getElementById('confirmPassword').value.trim();
         const loginErrorMessage = document.getElementById('loginErrorMessage');
 
-        // Update patterns for validation
+        // Email and password patterns for validation
         const emailPattern = /^[a-zA-Z0-9._%+-]+@kpriet\.ac\.in$/;
         const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?!.*[^\w@#])(?!.*\s)[A-Za-z\d@#]{8,}$/; // At least 8 characters, letters, numbers, @, # only
 
         // Clear any previous error messages
         loginErrorMessage.textContent = '';
 
+        // Email validation
         if (!emailPattern.test(loginEmail)) {
             loginErrorMessage.textContent = 'Please enter a valid organization-provided email address.';
             return;
         }
 
+        // Password match validation
         if (loginPassword !== confirmPassword) {
             loginErrorMessage.textContent = 'Passwords do not match.';
             return;
         }
 
-        if (passwordPattern.test(loginPassword)) {
-            document.getElementById('loginForm').style.display = 'none';
-            document.getElementById('registrationSection').style.display = 'block';
-        } else {
+        // Password format validation
+        if (!passwordPattern.test(loginPassword)) {
             loginErrorMessage.textContent = 'Invalid password. Ensure it meets the required criteria.';
+            return;
         }
+
+        // If all validations pass, proceed to registration section
+        document.getElementById('loginForm').style.display = 'none';
+        document.getElementById('registrationSection').style.display = 'block';
     });
 
-    // Toggle password visibility
+    // Toggle password visibility function
     function togglePasswordVisibility(toggleId, passwordId) {
-        document.getElementById(toggleId).addEventListener('change', function() {
+        document.getElementById(toggleId).addEventListener('click', function() {
             const passwordField = document.getElementById(passwordId);
-            passwordField.type = this.checked ? 'text' : 'password';
+            passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
         });
     }
 
-    togglePasswordVisibility('showLoginPassword', 'loginPassword');
-    togglePasswordVisibility('showConfirmPassword', 'confirmPassword');
+    togglePasswordVisibility('toggleLoginPassword', 'loginPassword');
+    togglePasswordVisibility('toggleConfirmPassword', 'confirmPassword');
 
     // Handle registration form submission
     document.getElementById('registrationForm').addEventListener('submit', function(e) {
@@ -61,21 +68,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Regex patterns
         const namePattern = /^[A-Za-z\s]+$/;
-        const regEmailPattern = /^[a-zA-Z0-9._%+-]+@kpriet\.ac\.in$/; // Renamed to avoid conflict
+        const regEmailPattern = /^[a-zA-Z0-9._%+-]+@kpriet\.ac\.in$/; 
         const phonePattern = /^[0-9]{10}$/;
         const rollNumberPattern = /^[A-Za-z0-9]{7}$/;
 
         // Clear any previous error messages
         errorMessage.textContent = '';
 
-        // Validation
+        // Validation checks
         let isValid = true;
 
         if (!namePattern.test(name)) {
             errorMessage.textContent = "Please enter a valid name (letters and spaces only).";
             document.getElementById('name').focus();
             isValid = false;
-        } else if (gender === "") {
+        } else if (!gender) {
             errorMessage.textContent = "Please select your gender.";
             document.getElementById('gender').focus();
             isValid = false;
@@ -101,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (!isValid) {
-            return;  // Do not proceed if any validation fails
+            return; // Stop if validation fails
         }
 
         // If all validations pass, redirect to the thank you page
@@ -112,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = "thankyou.html";
     });
 
-    // JavaScript for cursor movement and scroll effect
+    // Cursor movement and scroll effect
     const cursor = document.createElement('div');
     cursor.classList.add('cursor');
     document.body.appendChild(cursor);
