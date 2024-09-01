@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let name = document.getElementById('name').value.trim();
         let gender = document.getElementById('gender').value;
+        let Department = document.getElementById('Department').value;
         let rollNumber = document.getElementById('rollNumber').value.trim();
         let dob = document.getElementById('dob').value;
         let email = document.getElementById('email').value.trim();
@@ -67,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Get selected roles
         let selectedRoles = Array.from(document.querySelectorAll('input[name="roles"]:checked')).map(cb => cb.value);
-
+        
         // Regex patterns
         const namePattern = /^[A-Za-z\s]+$/;
         const regEmailPattern = /^[a-zA-Z0-9._%+-]+@kpriet\.ac\.in$/; 
@@ -107,6 +108,10 @@ document.addEventListener('DOMContentLoaded', () => {
             isValid = false;
         } else if (selectedRoles.length === 0 || selectedRoles.length > 2) {
             errorMessage.textContent = "Please select up to 2 roles.";
+            isValid = false;
+        } else if (!Department) {
+            errorMessage.textContent = "Please select your department.";
+            document.getElementById('Department').focus();
             isValid = false;
         } else {
             // Word count validation for the description text area
