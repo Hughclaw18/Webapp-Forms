@@ -109,6 +109,11 @@
                     <input type="checkbox" id="Treasurer" name="roles" value="Treasurer">
                     <label for="Treasurer">Treasurer</label><br>
                 </fieldset>
+                <div class="textarea-wrapper">
+                    <label for="text-box">Enter your text (minimum 100 words):</label><br>
+                    <textarea id="text-box" rows="10" cols="50" oninput="checkWordCount()"></textarea>
+                    <div id="error-message" class="error-message"></div>
+                </div>
 
                 <button type="submit">Register</button>
                 <p id="errorMessage" class="error"></p>
