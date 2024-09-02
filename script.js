@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let dob = document.getElementById('dob').value;
         let email = document.getElementById('email').value.trim();
         let phone = document.getElementById('phone').value.trim();
-        let description = document.getElementById('description').value.trim(); // Get the value of the text area
+        let description = document.getElementById('description').value.trim();
         let errorMessage = document.getElementById('errorMessage');
 
         // Get selected roles
@@ -111,6 +111,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log("Description too short");
                 document.getElementById('description').focus();
                 isValid = false;
+            }
+        }
+
+        // Media upload validation
+        const mediaUpload = document.getElementById('mediaUpload');
+        const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.pdf|\.doc|\.docx)$/i;
+        const maxFileSize = 2 * 1024 * 1024; // 2MB
+        const files = mediaUpload.files;
+        const uploadErrorMessage = document.getElementById('uploadErrorMessage');
+
+        uploadErrorMessage.textContent = ''; // Clear previous error messages
+
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+
+            // Check file type
+            if (!allowedExtensions.exec(file.name)) {
+                uploadErrorMessage.textContent = 'Invalid file type. Only JPG, JPEG, PNG, PDF, DOC, and DOCX files are allowed.';
+                mediaUpload.value = ''; // Clear the input value to remove the invalid file
+                isValid = false;
+                break;
+            }
+
+            // Check file size
+            if (file.size > maxFileSize) {
+                uploadErrorMessage.textContent = 'File size must be less than 2MB.';
+                mediaUpload.value = ''; // Clear the input value to remove the oversized file
+                isValid = false;
+                break;
             }
         }
 
