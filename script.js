@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Password format validation
         if (!passwordPattern.test(loginPassword)) {
-            loginErrorMessage.textContent = 'Invalid password. Ensure it meets the required criteria.';
+            loginErrorMessage.textContent = 'Invalid password, password can contain only alphanumerics and @,#. Ensure it is has min 8 characters.';
             return;
         }
 
