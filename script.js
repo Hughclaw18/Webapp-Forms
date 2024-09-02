@@ -141,9 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 isValid = false;
                 break;
             }
-        }   else {
-            uploadErrorMessage.textContent = 'Please upload your ID proof.';
-            isValid = false; 
         }
 
         if (!isValid) {
