@@ -79,11 +79,12 @@ body {
 }
 
 .textarea-wrapper {
-            margin: 25px 0;
+            margin: 20px 0;
         }
         .error-message {
             color: red;
             font-size: 14px;
+            position: relative;
         }
 /* Password Wrapper for Toggle Visibility Icon */
 .password-wrapper {
